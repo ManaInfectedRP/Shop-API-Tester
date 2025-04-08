@@ -16,7 +16,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.collectionVariables.set('base_url','http://localhost:5000/api/')"
+									""
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -45,11 +45,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/products",
+							"raw": "http://localhost:5000/api/products",
+							"protocol": "http",
 							"host": [
-								"{{base_url}}"
+								"localhost"
 							],
+							"port": "5000",
 							"path": [
+								"api",
 								"products"
 							]
 						}
@@ -63,7 +66,6 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.collectionVariables.set('base_url','http://localhost:5000/api/')\r",
 									"pm.environment.set(\"productId\",1)"
 								],
 								"type": "text/javascript",
@@ -83,7 +85,12 @@
 									"\r",
 									"pm.test(\"Status code is 200\", () => {\r",
 									"    pm.response.to.have.status(200);\r",
-									"});"
+									"});\r",
+									"\r",
+									"pm.test(\"Response is an array\", function () {\r",
+									"  pm.expect(pm.response.json()).to.be.an('array');\r",
+									"});\r",
+									""
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -94,11 +101,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/products",
+							"raw": "http://localhost:5000/api/products",
+							"protocol": "http",
 							"host": [
-								"{{base_url}}"
+								"localhost"
 							],
+							"port": "5000",
 							"path": [
+								"api",
 								"products"
 							]
 						}
@@ -112,7 +122,20 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.collectionVariables.set('base_url','http://localhost:5000/api/')"
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is an array\", function () {\r",
+									"  pm.expect(pm.response.json()).to.be.an('array');\r",
+									"});\r",
+									""
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -132,11 +155,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/products",
+							"raw": "http://localhost:5000/api/products",
+							"protocol": "http",
 							"host": [
-								"{{base_url}}"
+								"localhost"
 							],
+							"port": "5000",
 							"path": [
+								"api",
 								"products"
 							]
 						}
@@ -173,7 +199,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.collectionVariables.set('base_url','http://localhost:5000/api/')"
+									""
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -184,11 +210,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/categories",
+							"raw": "http://localhost:5000/api/categories",
+							"protocol": "http",
 							"host": [
-								"{{base_url}}"
+								"localhost"
 							],
+							"port": "5000",
 							"path": [
+								"api",
 								"categories"
 							]
 						}
@@ -202,7 +231,20 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.collectionVariables.set('base_url','http://localhost:5000/api/')"
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response is an array\", function () {\r",
+									"  pm.expect(pm.response.json()).to.be.an('array');\r",
+									"});\r",
+									""
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -229,11 +271,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/categories",
+							"raw": "http://localhost:5000/api/categories",
+							"protocol": "http",
 							"host": [
-								"{{base_url}}"
+								"localhost"
 							],
+							"port": "5000",
 							"path": [
+								"api",
 								"categories"
 							],
 							"query": [
@@ -259,6 +304,9 @@
 							"listen": "test",
 							"script": {
 								"exec": [
+									"pm.test(\"Response is an array\", function () {\r",
+									"  pm.expect(pm.response.json()).to.be.an('array');\r",
+									"});\r",
 									""
 								],
 								"type": "text/javascript",
@@ -269,7 +317,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.collectionVariables.set('base_url','http://localhost:5000/api/')"
+									""
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -295,11 +343,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/login",
+							"raw": "http://localhost:5000/api/login",
+							"protocol": "http",
 							"host": [
-								"{{base_url}}"
+								"localhost"
 							],
+							"port": "5000",
 							"path": [
+								"api",
 								"login"
 							]
 						}
@@ -352,6 +403,45 @@
 				}
 			},
 			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "product_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "productList",
+			"value": "",
+			"type": "string"
 		}
 	]
 }
