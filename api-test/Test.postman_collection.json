@@ -16,7 +16,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									""
+									"pm.collectionVariables.set('base_url','http://localhost:5000/api/')"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -45,15 +45,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5000/api/products",
-							"protocol": "http",
+							"raw": "{{base_url}}products",
 							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"products"
+								"{{base_url}}products"
 							]
 						}
 					},
@@ -66,6 +60,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
+									"pm.collectionVariables.set('base_url','http://localhost:5000/api/')\r",
 									"pm.environment.set(\"productId\",1)"
 								],
 								"type": "text/javascript",
@@ -101,15 +96,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5000/api/products",
-							"protocol": "http",
+							"raw": "{{base_url}}products",
 							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"products"
+								"{{base_url}}products"
 							]
 						}
 					},
@@ -122,7 +111,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									""
+									"pm.collectionVariables.set('base_url','http://localhost:5000/api/')"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -155,15 +144,9 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/products",
-							"protocol": "http",
+							"raw": "{{base_url}}products",
 							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"products"
+								"{{base_url}}products"
 							]
 						}
 					},
@@ -199,7 +182,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									""
+									"pm.collectionVariables.set('base_url','http://localhost:5000/api/')"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -210,15 +193,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5000/api/categories",
-							"protocol": "http",
+							"raw": "{{base_url}}categories",
 							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"categories"
+								"{{base_url}}categories"
 							]
 						}
 					},
@@ -231,7 +208,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									""
+									"pm.collectionVariables.set('base_url','http://localhost:5000/api/')"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -271,15 +248,9 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/categories",
-							"protocol": "http",
+							"raw": "{{base_url}}categories",
 							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"categories"
+								"{{base_url}}categories"
 							],
 							"query": [
 								{
@@ -317,7 +288,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									""
+									"pm.collectionVariables.set('base_url','http://localhost:5000/api/')"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -343,15 +314,9 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/login",
-							"protocol": "http",
+							"raw": "{{base_url}}login",
 							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"login"
+								"{{base_url}}login"
 							]
 						}
 					},
