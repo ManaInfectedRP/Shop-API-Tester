@@ -275,6 +275,11 @@
 							"listen": "test",
 							"script": {
 								"exec": [
+									"// Fixed syntax for accessing response JSON\r",
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
 									"pm.test(\"Response is an array\", function () {\r",
 									"  pm.expect(pm.response.json()).to.be.an('array');\r",
 									"});\r",
