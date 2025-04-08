@@ -1,27 +1,297 @@
 {
 	"info": {
-		"_postman_id": "bdee7523-da62-47d0-ad10-b27e747d81f7",
-		"name": "Test",
+		"_postman_id": "eee29401-863b-4e88-a8a4-9c1bba26b46f",
+		"name": "API Övningar",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "24654178",
-		"_collection_link": "https://gold-comet-656608.postman.co/workspace/mai24ha~7d1af142-79af-4c75-b252-0065d8302af5/collection/24654178-bdee7523-da62-47d0-ad10-b27e747d81f7?action=share&source=collection_link&creator=24654178"
+		"_exporter_id": "41615458"
 	},
 	"item": [
 		{
-			"name": "GetApi",
+			"name": "Products",
+			"item": [
+				{
+					"name": "AllProducts",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Fixed syntax for accessing response JSON\r",
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is an array\", function () {\r",
+									"  pm.expect(pm.response.json()).to.be.an('array');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/products",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetProductById=1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Fixed syntax for accessing response JSON\r",
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is an array\", function () {\r",
+									"  pm.expect(pm.response.json()).to.be.an('array');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/products/1",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"products",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NewProduct",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Name\": \"Test\",\r\n    \"Price\": 500,\r\n    \"CategoryId\": 6\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/products",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "AllCategories",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Fixed syntax for accessing response JSON\r",
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is an array\", function () {\r",
+									"  pm.expect(pm.response.json()).to.be.an('array');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/categories",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NewCategorie",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "name",
+								"value": "test123",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/categories",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"categories"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "test",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "LoginSomAdmin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"admin@admin.com\",\r\n  \"password\": \"admin123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/login",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GetAPI",
 			"event": [
 				{
-					"listen": "test",
+					"listen": "prerequest",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", () => {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Text in body is Hello World!\", () => {\r",
-							"    pm.expect(pm.response.text()).to.eql(\"Hello World!\")\r",
-							"})\r",
-							"\r",
 							""
 						],
 						"type": "text/javascript",
@@ -29,117 +299,33 @@
 					}
 				},
 				{
-					"listen": "prerequest",
-					"script": {
-						"exec": [
-							"pm.collectionVariables.set('base_url','http://localhost:5000/api/')\r",
-							"pm.collectionVariables.set('product_id', 10)"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{base_url}}",
-					"host": [
-						"{{base_url}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GetProducts",
-			"event": [
-				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"let productId = pm.environment.get(\"productId\");\r",
-							"let productList = pm.response.json();\r",
-							"\r",
-							"pm.collectionVariables.set(\"productList\", productList);\r",
-							"\r",
-							"\r",
-							"\r",
-							"pm.test(\"Status code is 200\", () => {\r",
+							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});"
 						],
 						"type": "text/javascript",
 						"packages": {}
 					}
-				},
-				{
-					"listen": "prerequest",
-					"script": {
-						"exec": [
-							"pm.environment.set(\"productId\",1)"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
 				}
 			],
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
-					"raw": "http://localhost:5000/api/products",
-					"protocol": "http",
+					"raw": "localhost:5000/api",
 					"host": [
 						"localhost"
 					],
 					"port": "5000",
 					"path": [
-						"api",
-						"products"
+						"api"
 					]
 				}
 			},
 			"response": []
-		}
-	],
-	"variable": [
-		{
-			"key": "base_url",
-			"value": ""
-		},
-		{
-			"key": "product_id",
-			"value": ""
-		},
-		{
-			"key": "productList",
-			"value": ""
 		}
 	]
 }
