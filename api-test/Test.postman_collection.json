@@ -212,7 +212,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"Name\": \"Test\",\r\n    \"Price\": 500,\r\n    \"CategoryId\": 1\r\n}",
+							"raw": "{\r\n    \"Name\": \"Test\",\r\n    \"Price\": 500,\r\n    \"CategoryId\": 1,\r\n    \"Description\": \"\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
