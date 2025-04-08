@@ -65,7 +65,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									""
+									"pm.environment.set(\"productId\",1)"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -75,15 +75,16 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"// Fixed syntax for accessing response JSON\r",
-									"pm.test(\"Response status code is 200\", function () {\r",
-									"  pm.response.to.have.status(200);\r",
-									"});\r",
+									"let productId = pm.environment.get(\"productId\");\r",
+									"let productList = pm.response.json();\r",
 									"\r",
-									"pm.test(\"Response is an array\", function () {\r",
-									"  pm.expect(pm.response.json()).to.be.an('array');\r",
-									"});\r",
-									""
+									"pm.collectionVariables.set(\"productList\", productList);\r",
+									"\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -292,9 +293,8 @@
 					"listen": "prerequest",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
+							"pm.collectionVariables.set('base_url','http://localhost:5000/api/')\r",
+							"pm.collectionVariables.set('product_id', 10)"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -304,6 +304,14 @@
 					"listen": "test",
 					"script": {
 						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Text in body is Hello World!\", () => {\r",
+							"    pm.expect(pm.response.text()).to.eql(\"Hello World!\")\r",
+							"})\r",
+							"\r",
 							""
 						],
 						"type": "text/javascript",
