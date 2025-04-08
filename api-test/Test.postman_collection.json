@@ -7,6 +7,66 @@
 	},
 	"item": [
 		{
+			"name": "Users",
+			"item": [
+				{
+					"name": ".LoginSomAdmin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Fixed syntax for accessing response JSON\r",
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set('base_url','http://localhost:5000/api/')"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"admin@admin.com\",\r\n  \"password\": \"admin123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}login",
+							"host": [
+								"{{base_url}}login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Products",
 			"item": [
 				{
@@ -121,9 +181,26 @@
 							"listen": "test",
 							"script": {
 								"exec": [
+									"console.log(\"Status Code:\", pm.response.code);\r",
+									"console.log(\"Response Body:\", pm.response.text());\r",
+									"\r",
 									"pm.test(\"Response status code is 200\", function () {\r",
 									"  pm.response.to.have.status(200);\r",
-									"});"
+									"});\r",
+									"\r",
+									"pm.test(\"Check if response has valid JSON or not 401\", function () {\r",
+									"    if (pm.response.text()) {\r",
+									"        try {\r",
+									"            const jsonData = pm.response.json();\r",
+									"            pm.expect(jsonData.status).to.not.eql(401);\r",
+									"        } catch (e) {\r",
+									"            console.warn(\"Not JSON:\", e);\r",
+									"        }\r",
+									"    } else {\r",
+									"        console.warn(\"Response body is empty\");\r",
+									"    }\r",
+									"});\r",
+									""
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -217,9 +294,27 @@
 							"listen": "test",
 							"script": {
 								"exec": [
+									"console.log(\"Status Code:\", pm.response.code);\r",
+									"console.log(\"Response Body:\", pm.response.text());\r",
+									"\r",
 									"pm.test(\"Response status code is 200\", function () {\r",
 									"  pm.response.to.have.status(200);\r",
-									"});"
+									"});\r",
+									"\r",
+									"pm.test(\"Check if response has valid JSON or not 401\", function () {\r",
+									"    if (pm.response.text()) {\r",
+									"        try {\r",
+									"            const jsonData = pm.response.json();\r",
+									"            pm.expect(jsonData.status).to.not.eql(401);\r",
+									"        } catch (e) {\r",
+									"            console.warn(\"Not JSON:\", e);\r",
+									"        }\r",
+									"    } else {\r",
+									"        console.warn(\"Response body is empty\");\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									""
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -234,6 +329,11 @@
 								"value": "test123",
 								"type": "text",
 								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -256,66 +356,6 @@
 									"value": "test",
 									"disabled": true
 								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Users",
-			"item": [
-				{
-					"name": "LoginSomAdmin",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"// Fixed syntax for accessing response JSON\r",
-									"pm.test(\"Response status code is 200\", function () {\r",
-									"  pm.response.to.have.status(200);\r",
-									"});\r",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"pm.collectionVariables.set('base_url','http://localhost:5000/api/')"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"email\": \"admin@admin.com\",\r\n  \"password\": \"admin123\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{base_url}}login",
-							"host": [
-								"{{base_url}}login"
 							]
 						}
 					},
