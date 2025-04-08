@@ -16,7 +16,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									""
+									"pm.collectionVariables.set('base_url','http://localhost:5000/api/')"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -45,13 +45,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:5000/api/products",
+							"raw": "{{base_url}}/products",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "5000",
 							"path": [
-								"api",
 								"products"
 							]
 						}
@@ -65,6 +63,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
+									"pm.collectionVariables.set('base_url','http://localhost:5000/api/')\r",
 									"pm.environment.set(\"productId\",1)"
 								],
 								"type": "text/javascript",
@@ -95,15 +94,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:5000/api/products/1",
+							"raw": "{{base_url}}/products",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "5000",
 							"path": [
-								"api",
-								"products",
-								"1"
+								"products"
 							]
 						}
 					},
@@ -111,6 +107,18 @@
 				},
 				{
 					"name": "NewProduct",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set('base_url','http://localhost:5000/api/')"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -124,13 +132,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:5000/api/products",
+							"raw": "{{base_url}}/products",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "5000",
 							"path": [
-								"api",
 								"products"
 							]
 						}
@@ -162,19 +168,27 @@
 								"type": "text/javascript",
 								"packages": {}
 							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set('base_url','http://localhost:5000/api/')"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
 						}
 					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:5000/api/categories",
+							"raw": "{{base_url}}/categories",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "5000",
 							"path": [
-								"api",
 								"categories"
 							]
 						}
@@ -183,6 +197,18 @@
 				},
 				{
 					"name": "NewCategorie",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set('base_url','http://localhost:5000/api/')"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -203,13 +229,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:5000/api/categories",
+							"raw": "{{base_url}}/categories",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "5000",
 							"path": [
-								"api",
 								"categories"
 							],
 							"query": [
@@ -245,7 +269,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									""
+									"pm.collectionVariables.set('base_url','http://localhost:5000/api/')"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -271,13 +295,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:5000/api/login",
+							"raw": "{{base_url}}/login",
 							"host": [
-								"localhost"
+								"{{base_url}}"
 							],
-							"port": "5000",
 							"path": [
-								"api",
 								"login"
 							]
 						}
@@ -323,13 +345,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:5000/api",
+					"raw": "{{base_url}}",
 					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"api"
+						"{{base_url}}"
 					]
 				}
 			},
