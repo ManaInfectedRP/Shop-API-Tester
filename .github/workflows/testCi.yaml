@@ -18,7 +18,7 @@ jobs:
       - name: Setup dotnet
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: 9.x
       - name: Install Newman
         run: npm install -g newman
       - name: Install dotnet project dependencies
@@ -37,7 +37,7 @@ jobs:
       - name: Setup dotnet
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: 9.x
       - name: Install dotnet project dependencies
         run: dotnet restore
       - name: Build/Restore Playwright Project
